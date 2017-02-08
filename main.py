@@ -1,9 +1,27 @@
+"""To Download competetion files from Kaggle.
+
+TODO:
+
+* To give competetion with out `-`, we currently depend on it.
+* To micro mise the jobs here
+* To re-check the argument input style
+    * clear any trailing space/arg parse takes care of
+* To include search of competetion
+
+
+Long Terms Goals:
+
+* To make interactive search after connecting to kaggle
+* To create a new folder & store data there.
+* Download all file or only some? with yes or no
+    * commit or RE-DO - selecting files
+"""
 from robobrowser import RoboBrowser
 import argparse
 
 
 def main(competition, username, password):
-
+    """To login and download files."""
     browser = RoboBrowser(history=True, parser="html.parser")
     base = 'https://www.kaggle.com'
     browser.open('/'.join([base, 'account/login']))
@@ -27,6 +45,7 @@ def main(competition, username, password):
 
 
 def run():
+    """To take commandlien Arguments."""
     parser = argparse.ArgumentParser(
         description='download kaggle datasets')
     parser.add_argument('-u', '--username', help='kaggle username')
@@ -39,4 +58,3 @@ def run():
 
 if __name__ == '__main__':
     run()
-
